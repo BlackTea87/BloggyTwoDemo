@@ -1,0 +1,42 @@
+﻿@model List<BloggyTwo.Models.BlogPost>
+
+@{
+    ViewData["Title"] = "My Blog Posts";
+}
+
+<h2>My Blog Posts</h2>
+
+<p>
+    <a href="/BlogPost/Create">Create New Post</a> |
+    <a href="/">Home</a>
+</p>
+
+@if (!Model.Any())
+{
+    <p>You have not created any blog posts yet.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Created</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var post in Model)
+            {
+                <tr>
+                    <td>@post.Title</td>
+                    <td>@post.Created.ToLocalTime().ToString("g")</td>
+                    <td>
+                        <a href="/BlogPost/Edit/@post.Id">Edit</a> |
+                        <a href="/BlogPost/Delete/@post.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

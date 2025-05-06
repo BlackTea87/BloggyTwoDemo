@@ -1,0 +1,27 @@
+﻿@model BloggyTwo.Models.BlogPost
+
+@{
+    ViewData["Title"] = "Create Blog Post (Admin)";
+}
+
+<h2>Create Blog Post (Admin)</h2>
+
+<form asp-action="CreatePost" method="post">
+    <div>
+        <label asp-for="Title"></label>
+        <input asp-for="Title" />
+        <span asp-validation-for="Title" style="color:red"></span>
+    </div>
+    <div>
+        <label asp-for="Content"></label>
+        <textarea asp-for="Content"></textarea>
+        <span asp-validation-for="Content" style="color:red"></span>
+    </div>
+    <button type="submit">Create</button>
+</form>
+
+<p><a href="/Admin/BlogPosts">Back to Posts</a></p>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

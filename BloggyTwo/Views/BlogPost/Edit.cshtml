@@ -1,0 +1,28 @@
+﻿@model BloggyTwo.Models.BlogPost
+
+@{
+    ViewData["Title"] = "Edit Blog Post";
+}
+
+<h2>Edit Blog Post</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <label asp-for="Title"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Content"></label>
+        <textarea asp-for="Content" class="form-control" rows="5"></textarea>
+        <span asp-validation-for="Content" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary mt-2">Save</button>
+</form>
+
+<p><a href="/BlogPost/Index">Back to My Posts</a></p>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

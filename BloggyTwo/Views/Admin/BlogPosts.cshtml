@@ -1,0 +1,34 @@
+﻿@model List<BloggyTwo.Models.BlogPost>
+
+@{
+    ViewData["Title"] = "Manage All Blog Posts";
+}
+
+<h2>All Blog Posts</h2>
+
+<p><a href="/Admin/CreatePost">Create New Post</a> | <a href="/Admin/Users">Manage Users</a> | <a href="/">Home</a></p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Created</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var post in Model)
+        {
+            <tr>
+                <td>@post.Title</td>
+                <td>@post.Author?.UserName</td>
+                <td>@post.Created.ToLocalTime().ToString("g")</td>
+                <td>
+                    <a href="/Admin/EditPost/@post.Id">Edit</a> |
+                    <a href="/Admin/DeletePost/@post.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
